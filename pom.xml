@@ -19,7 +19,6 @@
         <saucerest.version>2.5.3</saucerest.version>
     </properties>
 
-
     <artifactId>sauce-ondemand</artifactId>
     <version>${revision}${changelist}</version>
     <packaging>hpi</packaging>
