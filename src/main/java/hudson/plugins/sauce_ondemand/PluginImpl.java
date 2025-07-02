@@ -34,14 +34,14 @@ import hudson.util.ListBoxModel;
 import hudson.util.Secret;
 import java.io.IOException;
 import java.util.logging.Logger;
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 import jenkins.model.Jenkins;
 import net.sf.json.JSONObject;
 import org.jenkins.ui.icon.Icon;
 import org.jenkins.ui.icon.IconSet;
 import org.jenkins.ui.icon.IconType;
 import org.kohsuke.stapler.AncestorInPath;
-import org.kohsuke.stapler.StaplerRequest;
+import org.kohsuke.stapler.StaplerRequest2;
 
 /**
  * Persists the access credentials and common options for the Sauce plugin.
@@ -148,7 +148,7 @@ public class PluginImpl extends Plugin implements Describable<PluginImpl> {
   }
 
   @Override
-  public void configure(StaplerRequest req, JSONObject formData)
+  public void configure(StaplerRequest2 req, JSONObject formData)
       throws IOException, ServletException, Descriptor.FormException {
     sauceConnectDirectory = formData.getString("sauceConnectDirectory");
     sauceConnectOptions = formData.getString("sauceConnectOptions");
