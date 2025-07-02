@@ -26,6 +26,7 @@ package hudson.plugins.sauce_ondemand;
 import com.cloudbees.plugins.credentials.common.StandardUsernameListBoxModel;
 import com.saucelabs.ci.BrowserFactory;
 import com.saucelabs.saucerest.DataCenter;
+import edu.umd.cs.findbugs.annotations.NonNull;
 import hudson.Extension;
 import hudson.Plugin;
 import hudson.model.*;
@@ -88,7 +89,7 @@ public class PluginImpl extends Plugin implements Describable<PluginImpl> {
   private String credentialId;
 
   public static PluginImpl get() {
-    Jenkins j = Jenkins.getInstance();
+    Jenkins j = Jenkins.getInstanceOrNull();
     if (j == null) {
       return null;
     }
@@ -161,7 +162,7 @@ public class PluginImpl extends Plugin implements Describable<PluginImpl> {
   }
 
   public DescriptorImpl getDescriptor() {
-    Jenkins j = Jenkins.getInstance();
+    Jenkins j = Jenkins.getInstanceOrNull();
     if (j == null) {
       return null;
     }
@@ -241,6 +242,7 @@ public class PluginImpl extends Plugin implements Describable<PluginImpl> {
 
   @Extension
   public static final class DescriptorImpl extends Descriptor<PluginImpl> {
+    @NonNull
     @Override
     public String getDisplayName() {
       return "Sauce OnDemand";
